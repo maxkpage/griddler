@@ -1,5 +1,6 @@
 class Griddler::EmailsController < ActionController::Base
   skip_before_action :verify_authenticity_token, raise: false
+  skip_parameter_encoding :create # Adding this for Rails 6.1 to accept non-utf char. Ex: i18n char
 
   def create
     normalized_params.each do |p|
